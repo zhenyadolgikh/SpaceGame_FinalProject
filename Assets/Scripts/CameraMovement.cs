@@ -4,25 +4,38 @@ using UnityEngine;
 
 public class CameraMovement : MonoBehaviour
 {
-    public float moveSpeed = 20f;
+    //sensitivity of mouse
+    public float mouseSensitivity = 100f;
+    //vertical rotation
+    private float verticalRotation = 0f;
+    private Transform playerBody;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //lock the cursor so it doesn't leave the game window
+       Cursor.lockState = CursorLockMode.Locked;
+       //reference to player
+       playerBody = transform.parent;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-         // Get input for movement
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
+        //move input
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        // Calculate movement direction
-        Vector3 move = new Vector3(moveX, 0f, moveZ);
+        //rotate camera horizontally following mouse
+        playerBody.Rotate(Vector3.up * mouseX);
 
-        // Move the camera relative to its current direction
-        transform.Translate(move * moveSpeed * Time.deltaTime);
+        //vertical rotation
+        verticalRotation -= mouseY;
+        //limits to prevent flipping upside down
+        //verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+
+        //apply the vertical rotation by modifying the local rotation of the camera
+        transform.localRotation = Quaternion.Euler(verticalRotation, transform.localEulerAngles.y, 0f);
     }
 }
