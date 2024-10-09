@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
     {
         //hide ui window from the start
         uiWindow.SetActive(false);
+        //lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+        //show cursor on stat is false
+        Cursor.visible = false;
     }
 
     //trigger zone
@@ -21,6 +25,10 @@ public class UIManager : MonoBehaviour
         {
             //show ui window when player touches trigger
             uiWindow.SetActive(true);
+            //show cursor
+            Cursor.visible = true;
+            //unlock mouse
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -31,6 +39,10 @@ public class UIManager : MonoBehaviour
         {
             //hide ui window when player leaves trigger
             uiWindow.SetActive(false);
+            //lock cursor
+            Cursor.lockState = CursorLockMode.Locked;
+            //show cursor on stat is false
+            Cursor.visible = false;
         }
     }
 }

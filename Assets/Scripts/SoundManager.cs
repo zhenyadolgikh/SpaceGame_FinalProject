@@ -22,12 +22,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //hide panel on start
-        panel.SetActive(false);
-        //lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        //hide cursor 
-        Cursor.visible = false;
+
     }
 
     // Update is called once per frame
@@ -70,12 +65,11 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySequence()
     {
-        //show panel
-        panel.SetActive(true);
+        
         //unlock mouse
-        Cursor.lockState = CursorLockMode.None;
+        //Cursor.lockState = CursorLockMode.None;
         //show coursor
-        Cursor.visible = true;
+        //Cursor.visible = true;
         //player sequence reset
         playerNoteIndex = 0;
 
@@ -107,7 +101,7 @@ public class SoundManager : MonoBehaviour
         //store players input in player sequence array
         playerSequenceOne[playerNoteIndex] = inputNote;
 
-        // Check if player input matches the predefined sequence
+        //check if players input matches sequence
         if (playerSequenceOne[playerNoteIndex] == sequenceOne[currentNoteIndex])
         {
             currentNoteIndex++;
@@ -141,7 +135,7 @@ public class SoundManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //hide coursor
         Cursor.visible = false;
-        //hide panel
+        //hide panel when sequence repeated right
         panel.SetActive(false);
     }
 }
