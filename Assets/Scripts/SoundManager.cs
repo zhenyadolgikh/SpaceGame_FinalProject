@@ -9,10 +9,14 @@ public class SoundManager : MonoBehaviour
     public GameObject panel;
     //array list of sounds
     public AudioClip[] noteSounds = new AudioClip[7];
+    private List<int> currentSequence;
+    private int currentSequenceId;
+
     //sequence 1
-    private int[] sequenceOne = new int[] {0, 2, 3};
+    private List<int> sequenceOne = new List<int> {0, 2, 3};
+    private List<int> sequenceTwo = new List<int> {0, 0, 1};
     //player input
-    private int[] playerSequenceOne = new int[3];
+    private List<int> playerSequenceOne = new List<int>() {-1, -1, -1};
     private int currentNoteIndex = 0;
     private int playerNoteIndex = 0;
 
@@ -22,7 +26,8 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentSequenceId = 1;
+        currentSequence = sequenceOne;
     }
 
     // Update is called once per frame
@@ -69,16 +74,16 @@ public class SoundManager : MonoBehaviour
         playerNoteIndex = 0;
 
         //play sequence
-        StartCoroutine(PlayNoteSequence());
+        StartCoroutine(PlayNoteSequence(currentSequence));
         //see if sequence played
-        Debug.Log("playing sequence");
+        Debug.Log("laying sequence" + currentSequenceId);
     }
     //coroutine to play sequence one note at a time
-    IEnumerator PlayNoteSequence()
+    IEnumerator PlayNoteSequence(List<int> targetSequence)
     {
-        for (int i = 0; i < sequenceOne.Length; i++)
+        for (int i = 0; i < targetSequence.Count; i++)
         {
-            int noteIndex = sequenceOne[i];
+            int noteIndex = targetSequence[i];
             //play note
             audioSource.PlayOneShot(noteSounds[noteIndex]);
             //timing between notes
@@ -97,16 +102,19 @@ public class SoundManager : MonoBehaviour
         playerSequenceOne[playerNoteIndex] = inputNote;
 
         //check if players input matches sequence
-        if (playerSequenceOne[playerNoteIndex] == sequenceOne[currentNoteIndex])
+        if (playerSequenceOne[playerNoteIndex] == currentSequence[currentNoteIndex])
         {
             currentNoteIndex++;
             playerNoteIndex++;
 
-            // If player completes the sequence, they win
-            if (currentNoteIndex >= sequenceOne.Length)
+            //if sequence is right
+            if (currentNoteIndex >= currentSequence.Count)
             {
                 Debug.Log("Completed");
-               
+
+                currentSequenceId = 2;
+                currentSequence = sequenceTwo;
+                PlaySequence();
             }
         }
         else
