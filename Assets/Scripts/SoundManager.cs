@@ -65,11 +65,6 @@ public class SoundManager : MonoBehaviour
     }
     public void PlaySequence()
     {
-        
-        //unlock mouse
-        //Cursor.lockState = CursorLockMode.None;
-        //show coursor
-        //Cursor.visible = true;
         //player sequence reset
         playerNoteIndex = 0;
 
@@ -111,7 +106,7 @@ public class SoundManager : MonoBehaviour
             if (currentNoteIndex >= sequenceOne.Length)
             {
                 Debug.Log("Completed");
-                ResetCursor();
+               
             }
         }
         else
@@ -129,13 +124,5 @@ public class SoundManager : MonoBehaviour
     {
         PlayerInput(noteIndex);
     }
-    public void ResetCursor()
-    {
-        //lock cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        //hide coursor
-        Cursor.visible = false;
-        //hide panel when sequence repeated right
-        panel.SetActive(false);
-    }
+    
 }
