@@ -133,8 +133,8 @@ public class SoundManager : MonoBehaviour
     {
         if (noteIndex >= 0 && noteIndex < noteSounds.Length)
         {
-            audioSource.PlayOneShot(noteSounds[noteIndex]); // Play the sound clip
-            Debug.Log("Playing sound: " + noteIndex); // Log the played sound
+            audioSource.PlayOneShot(noteSounds[noteIndex]);
+            Debug.Log("Playing sound: " + noteIndex); 
         }
         PlayerInput(noteIndex);
     }
