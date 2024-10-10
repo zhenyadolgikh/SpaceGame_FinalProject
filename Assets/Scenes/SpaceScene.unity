@@ -602,13 +602,13 @@ MonoBehaviour:
   audioSource: {fileID: 871845858}
   panel: {fileID: 2111554457}
   noteSounds:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 61aa59c6ae6b14100830782e41fc048c, type: 3}
+  - {fileID: 8300000, guid: 43da512be7054488fb438b534f54ebf5, type: 3}
+  - {fileID: 8300000, guid: 597ea021047df4512bc40bdd140f0a68, type: 3}
+  - {fileID: 8300000, guid: 1ad976c4d1f4744a98ee40d058c93cde, type: 3}
+  - {fileID: 8300000, guid: 3e6cff11705594e4b9d73c66c234600d, type: 3}
+  - {fileID: 8300000, guid: 96b642ecef2624d66bc5b115fa637d19, type: 3}
+  - {fileID: 8300000, guid: ea41db5546f504e60ac18ea9007aba3c, type: 3}
   playButton: {fileID: 62296311}
 --- !u!1 &945731433
 GameObject:
