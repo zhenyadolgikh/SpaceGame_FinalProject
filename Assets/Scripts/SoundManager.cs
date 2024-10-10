@@ -30,7 +30,6 @@ public class SoundManager : MonoBehaviour
         currentSequence = sequenceOne;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //which key for which note
@@ -67,7 +66,9 @@ public class SoundManager : MonoBehaviour
         {
             playButton.onClick.Invoke();
         }
+        
     }
+
     public void PlaySequence()
     {
         //player sequence reset
@@ -130,6 +131,11 @@ public class SoundManager : MonoBehaviour
     //method when number keys are pressed
     public void OnNoteButtonPress(int noteIndex)
     {
+        if (noteIndex >= 0 && noteIndex < noteSounds.Length)
+        {
+            audioSource.PlayOneShot(noteSounds[noteIndex]); // Play the sound clip
+            Debug.Log("Playing sound: " + noteIndex); // Log the played sound
+        }
         PlayerInput(noteIndex);
     }
     
