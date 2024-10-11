@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
     //sequence 1
     private List<int> sequenceOne = new List<int> {0, 2, 3};
     private List<int> sequenceTwo = new List<int> {0, 0, 1};
+    private List<int> sequenceTwo = new List<int> {6, 4, 5, 1};
     //player input
     private List<int> playerSequenceOne = new List<int>() {-1, -1, -1};
     private int currentNoteIndex = 0;
@@ -134,7 +135,7 @@ public class SoundManager : MonoBehaviour
         if (noteIndex >= 0 && noteIndex < noteSounds.Length)
         {
             audioSource.PlayOneShot(noteSounds[noteIndex]);
-            Debug.Log("Playing sound: " + noteIndex); 
+            Debug.Log("Playing: " + noteIndex); 
         }
         PlayerInput(noteIndex);
     }

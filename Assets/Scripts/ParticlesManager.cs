@@ -44,16 +44,13 @@ public class ParticlesManager : MonoBehaviour
         }
     }
 
-    
     void PlayParticleEffect(int index)
     {
-        if (index >= 0 && index < particleEffects.Length && particleEffects[index] != null)
+      if (index >= 0 && index < particleEffects.Length && particleEffects[index] != null)
         {
         
-            Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * spawnDistance;
-
-           
-            GameObject effect = Instantiate(particleEffects[index], spawnPosition, Quaternion.identity);
+          Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * spawnDistance;
+          GameObject effect = Instantiate(particleEffects[index], spawnPosition, Quaternion.identity);
 
         }
     }
