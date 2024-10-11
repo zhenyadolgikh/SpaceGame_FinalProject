@@ -5,19 +5,15 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
+    public GameManager gameManager;
     public AudioSource audioSource;
-    public GameObject panel;
     //array list of sounds
     public AudioClip[] noteSounds = new AudioClip[7];
-    private List<int> currentSequence;
-    private int currentSequenceId;
+    public List<int> currentSequence;
 
-    //sequence 1
-    private List<int> sequenceOne = new List<int> {0, 2, 3};
-    private List<int> sequenceTwo = new List<int> {0, 0, 1};
-    private List<int> sequenceThree = new List<int> {6, 4, 5, 1};
+
     //player input
-    private List<int> playerSequenceOne = new List<int>() {-1, -1, -1};
+    private List<int> playerSequence;
     private int currentNoteIndex = 0;
     private int playerNoteIndex = 0;
 
@@ -27,8 +23,7 @@ public class SoundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentSequenceId = 1;
-        currentSequence = sequenceOne;
+
     }
 
     void Update()
@@ -70,16 +65,24 @@ public class SoundManager : MonoBehaviour
         
     }
 
+    public void UpdateTargetSequence(List<int> desiredTargetSequence)
+    {
+        currentSequence = desiredTargetSequence;
+        playerSequence = new List<int>();
+        for (int i = 0; i<desiredTargetSequence.Count; i++)
+            playerSequence.Add(-1);
+    }
+
     public void PlaySequence()
     {
         //player sequence reset
         playerNoteIndex = 0;
 
         //play sequence
-        StartCoroutine(PlayNoteSequence(currentSequence));
+        StartCoroutine(PlayNoteSequence(currentSequence)); // ToDo: Reference currentSequence from GameManager
         //see if sequence played
-        Debug.Log("laying sequence" + currentSequenceId);
     }
+
     //coroutine to play sequence one note at a time
     IEnumerator PlayNoteSequence(List<int> targetSequence)
     {
@@ -101,10 +104,10 @@ public class SoundManager : MonoBehaviour
     public void PlayerInput(int inputNote)
     {
         //store players input in player sequence array
-        playerSequenceOne[playerNoteIndex] = inputNote;
+        playerSequence[playerNoteIndex] = inputNote;
 
         //check if players input matches sequence
-        if (playerSequenceOne[playerNoteIndex] == currentSequence[currentNoteIndex])
+        if (playerSequence[playerNoteIndex] == currentSequence[currentNoteIndex])
         {
             currentNoteIndex++;
             playerNoteIndex++;
@@ -114,10 +117,7 @@ public class SoundManager : MonoBehaviour
             if (currentNoteIndex >= currentSequence.Count)
             {
                 Debug.Log("Completed");
-
-                currentSequenceId = 2;
-                currentSequence = sequenceTwo;
-                PlaySequence();
+                gameManager.SequenceWasCorrect();
             }
         }
         else
