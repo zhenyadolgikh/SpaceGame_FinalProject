@@ -1377,6 +1377,7 @@ MonoBehaviour:
   - {fileID: 0}
   spawnDistance: 3
   mainCamera: {fileID: 1558799364}
+  canvas: {fileID: 1704661056}
 --- !u!4 &899211007
 Transform:
   m_ObjectHideFlags: 0
