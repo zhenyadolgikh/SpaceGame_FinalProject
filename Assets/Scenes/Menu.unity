@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 377887180}
-  backgroundMusic: {fileID: 0}
+  backgroundMusic: {fileID: 8300000, guid: da7e4ceba89b84aed832c71fcfab5bfe, type: 3}
 --- !u!4 &377887182
 Transform:
   m_ObjectHideFlags: 0
