@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
         completedSequences++; // Increment the completed sequence count
         Debug.Log("Completed sequences: " + completedSequences);
 
+        // New: Hide the panel after completing a sequence
+        ShowHideUI(false);
+        //lock cursor
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (completedSequences >= totalSequences)
         {
             GameWon(); // Call GameWon if all sequences are completed
