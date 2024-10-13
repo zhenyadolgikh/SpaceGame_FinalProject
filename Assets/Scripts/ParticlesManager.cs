@@ -45,30 +45,21 @@ public class ParticlesManager : MonoBehaviour
             PlayParticleEffect(6);
         }
     }
-
-    //void PlayParticleEffect(int index)
-    //{
-      //if (index >= 0 && index < particleEffects.Length && particleEffects[index] != null)
-        //{
-        
-          //Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * spawnDistance;
-          //GameObject effect = Instantiate(particleEffects[index], spawnPosition, Quaternion.identity);
-
-        //}
-    //}
-
     void PlayParticleEffect(int index)
     {
         if (index >= 0 && index < particleEffects.Length && particleEffects[index] != null)
         {
-            //position is in front of camera
+            //spawn particles in front of the camera
             Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * spawnDistance;
-
             GameObject effect = Instantiate(particleEffects[index], spawnPosition, Quaternion.identity);
 
-            //makes camera parent
-            effect.transform.SetParent(mainCamera.transform);
+            // parent to follow the camera
+            effect.transform.parent = mainCamera.transform;
+
+            //so particles wont transform after parent
+            effect.transform.localScale = Vector3.one;
+
         }
     }
-}
+    }
 }
