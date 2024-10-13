@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject uiPanel;
+    public GameObject winPanel;
     public SoundManager soundManager;
 
     // NEW: Total number of sequences to win
@@ -48,8 +49,12 @@ public class GameManager : MonoBehaviour
     {
         isGameWon = true;
         Debug.Log("You Win!");
-        // Optionally, trigger UI elements or transitions here to show the win screen or message
-       // ShowHideUI(true); // Show UI to indicate winning state
+        //Show WinPanel
+        winPanel.gameObject.SetActive(true);
+        //show cursor
+        Cursor.visible = true;
+        //unlock mouse
+        Cursor.lockState = CursorLockMode.None;
     }
 
 
