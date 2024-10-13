@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParticlesManager : MonoBehaviour
 {
     public GameObject[] particleEffects = new GameObject[7];
-    //public float spawnDistance = 3f;
+    public float spawnDistance = 3f;
     public Camera mainCamera;
     public Canvas canvas; // Add reference to the UI canvas
 
@@ -61,12 +61,13 @@ public class ParticlesManager : MonoBehaviour
     {
         if (index >= 0 && index < particleEffects.Length && particleEffects[index] != null)
         {
-            // Spawn particle effect on canvas
-            GameObject effect = Instantiate(particleEffects[index], canvas.transform);
-            
-            // Optional: Set the position to the center of the canvas (or where needed)
-            RectTransform canvasRect = canvas.GetComponent<RectTransform>();
-            effect.transform.localPosition = new Vector3(0, 0, 0); // Adjust as needed
+            //position is in front of camera
+            Vector3 spawnPosition = mainCamera.transform.position + mainCamera.transform.forward * spawnDistance;
+
+            GameObject effect = Instantiate(particleEffects[index], spawnPosition, Quaternion.identity);
+
+            //makes camera parent
+            effect.transform.SetParent(mainCamera.transform);
         }
     }
 }
