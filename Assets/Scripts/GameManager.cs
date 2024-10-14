@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         //show cursor on stat is false
         Cursor.visible = false;
 
-         // Ensure all flowers are inactive at the start using for loop
+        //flowers are inactive at start
         for (int i = 0; i < flowerObjects.Count; i++)
         {
             flowerObjects[i].SetActive(false);
@@ -42,13 +42,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-     // Method to activate flowers or objects
+    //set flowers active (called in sequence was correct in gamemanga)
     public void FlowerUpdate()
     {
-        // Ensure that completedSequences does not exceed the list size
+        //to be sure sequence is complete before set active
         if (completedSequences > 0 && completedSequences <= flowerObjects.Count)
         {
-            // Activate the next flower/object based on the completed sequence count
+            // set next flower active based on the completed sequence count
             flowerObjects[completedSequences - 1].SetActive(true);
         }
     }
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             GameWon(); // Call GameWon if all sequences are completed
         }
 
-        // Update the flower (or other objects) activation
+        //Updates the flower activation
         FlowerUpdate();
     }
 
