@@ -8,6 +8,9 @@ public class PuzzleStage : MonoBehaviour
     public SoundManager soundManager;
     public List<int> targetSequence = new List<int> {0, 2, 3};
 
+    //station numbers
+    //public int stationID = 1;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +22,10 @@ public class PuzzleStage : MonoBehaviour
     void Update()
     {
         
+    }
+    void SequenceWasCorrect()
+    {
+        //if sequence was correct and puzzle number is blabla object set active
     }
 
     void OnTriggerEnter(Collider other)
