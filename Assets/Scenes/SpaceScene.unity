@@ -1700,13 +1700,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleEffects:
-  - {fileID: 8034063117989275317, guid: ef85e06dbe1d740528787c4f0f60967a, type: 3}
+  - {fileID: 8034063117989275317, guid: 493bf608e2ee94e1f9670bb7196213e1, type: 3}
   - {fileID: 8034063117989275317, guid: a4887458895a14304945ad81ae5083ca, type: 3}
   - {fileID: 8034063117989275317, guid: adeab49edaa4b49ba9e872e2f455f9e9, type: 3}
-  - {fileID: 8034063117989275317, guid: 1229868b763354f59b482f401c37a111, type: 3}
-  - {fileID: 8034063117989275317, guid: 4dfeb30cc47244b79af9a8a7859b9cc7, type: 3}
-  - {fileID: 8034063117989275317, guid: d947b73a6d2a040f88b638a6582ae1e0, type: 3}
-  - {fileID: 8034063117989275317, guid: 90cf9f0d0cb814c7fb407a89833f0685, type: 3}
+  - {fileID: 8034063117989275317, guid: ef85e06dbe1d740528787c4f0f60967a, type: 3}
+  - {fileID: 8034063117989275317, guid: 67d4515e39b834ae98daf7dadec44591, type: 3}
+  - {fileID: 8034063117989275317, guid: 73e695989f69445c6a9755137460a79c, type: 3}
+  - {fileID: 8034063117989275317, guid: 02b28ac49557e4f4ab5473a831726b40, type: 3}
   spawnDistance: 1
   mainCamera: {fileID: 1558799364}
   canvas: {fileID: 1704661056}
