@@ -45,7 +45,7 @@ public class ParticlesManager : MonoBehaviour
             PlayParticleEffect(6);
         }
     }
-    void PlayParticleEffect(int index)
+    public void PlayParticleEffect(int index)
     {
         if (index >= 0 && index < particleEffects.Length && particleEffects[index] != null)
         {
