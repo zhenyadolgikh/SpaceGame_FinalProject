@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
+    //HERE
+    public ParticlesManager particlesManager;
+
     public GameManager gameManager;
     public AudioSource audioSource;
     //array list of sounds
@@ -32,6 +35,7 @@ public class SoundManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             OnNoteButtonPress(0);
+            //PlayParticleEffect();
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {

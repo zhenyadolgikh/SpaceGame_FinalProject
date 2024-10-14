@@ -9,10 +9,9 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public SoundManager soundManager;
 
-    // NEW: Total number of sequences to win
     private int totalSequences = 3;
     private int completedSequences = 0;
-    private bool isGameWon = false; // NEW: Track if the game is won
+    private bool isGameWon = false; 
 
     //t
     // Start is called before the first frame update
@@ -27,14 +26,14 @@ public class GameManager : MonoBehaviour
     }
     void Update()
     {
-        // If game is won, stop further interactions
+        //if game is won, stop further interactions
         if (isGameWon)
         {
             return;
         }
     }
 
-    // NEW: Check if all sequences are completed
+    //checking if completed
     public void CheckWinCondition()
     {
         Debug.Log("Checking win condition...");
@@ -44,7 +43,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // NEW: Called when the player wins the game
+   //win 
     private void GameWon()
     {
         isGameWon = true;
@@ -60,7 +59,8 @@ public class GameManager : MonoBehaviour
 
     public void PlayNextSequence()
     {
-        if (!isGameWon) // Only play sequences if the game is not won
+        //if game is not over play further
+        if (!isGameWon)
         {
             soundManager.PlaySequence();
         }
@@ -69,10 +69,10 @@ public class GameManager : MonoBehaviour
     public void SequenceWasCorrect()
     {
         Debug.Log("Sequence was correct.");
-        completedSequences++; // Increment the completed sequence count
+        completedSequences++;
         Debug.Log("Completed sequences: " + completedSequences);
 
-        // New: Hide the panel after completing a sequence
+        //hides the panel
         ShowHideUI(false);
         //lock cursor
         Cursor.lockState = CursorLockMode.Locked;
