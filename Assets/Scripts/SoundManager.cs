@@ -94,6 +94,10 @@ public class SoundManager : MonoBehaviour
             int noteIndex = targetSequence[i];
             //play note
             audioSource.PlayOneShot(noteSounds[noteIndex]);
+
+            //plays particle effect
+            particlesManager.PlayParticleEffect(noteIndex);
+
             //timing between notes
             yield return new WaitForSeconds(1f);
         }

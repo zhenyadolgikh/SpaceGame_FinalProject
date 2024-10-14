@@ -1657,7 +1657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50325fe97e3b443a2bb55e550382a0e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlesManager: {fileID: 0}
+  particlesManager: {fileID: 899211006}
   gameManager: {fileID: 1816599848}
   audioSource: {fileID: 871845858}
   noteSounds:
