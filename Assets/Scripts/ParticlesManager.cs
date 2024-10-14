@@ -7,8 +7,7 @@ public class ParticlesManager : MonoBehaviour
     public GameObject[] particleEffects = new GameObject[7];
     public float spawnDistance = 3f;
     public Camera mainCamera;
-    public Canvas canvas; // Add reference to the UI canvas
-
+    public Canvas canvas;
 
     void Start()
     {
@@ -24,6 +23,7 @@ public class ParticlesManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             PlayParticleEffect(1);
+        }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             PlayParticleEffect(2);
@@ -62,4 +62,3 @@ public class ParticlesManager : MonoBehaviour
         }
     }
     }
-}
