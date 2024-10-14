@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     private int completedSequences = 0;
     private bool isGameWon = false; 
 
+    //List of flowers
+    public List<GameObject> flowerObjects;
+
     //t
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,12 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //show cursor on stat is false
         Cursor.visible = false;
+
+         // Ensure all flowers are inactive at the start using for loop
+        for (int i = 0; i < flowerObjects.Count; i++)
+        {
+            flowerObjects[i].SetActive(false);
+        }
     }
     void Update()
     {
@@ -30,6 +39,17 @@ public class GameManager : MonoBehaviour
         if (isGameWon)
         {
             return;
+        }
+    }
+
+     // Method to activate flowers or objects
+    public void FlowerUpdate()
+    {
+        // Ensure that completedSequences does not exceed the list size
+        if (completedSequences > 0 && completedSequences <= flowerObjects.Count)
+        {
+            // Activate the next flower/object based on the completed sequence count
+            flowerObjects[completedSequences - 1].SetActive(true);
         }
     }
 
@@ -81,6 +101,9 @@ public class GameManager : MonoBehaviour
         {
             GameWon(); // Call GameWon if all sequences are completed
         }
+
+        // Update the flower (or other objects) activation
+        FlowerUpdate();
     }
 
     public void ShowHideUI(bool isVisible)

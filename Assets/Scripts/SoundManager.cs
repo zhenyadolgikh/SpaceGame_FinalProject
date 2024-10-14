@@ -121,7 +121,7 @@ public class SoundManager : MonoBehaviour
             if (currentNoteIndex >= currentSequence.Count)
             {
                 Debug.Log("Completed");
-                gameManager.SequenceWasCorrect();
+                gameManager.SequenceWasCorrect(); //also add the flower function
             }
         }
         else
