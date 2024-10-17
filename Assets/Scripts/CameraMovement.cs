@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraMovement : MonoBehaviour
 {
     //sensitivity of mouse
-    public float mouseSensitivity = 100f;
+    public float mouseSensitivity = 600f;
     //vertical rotation
     private float verticalRotation = 0f;
     private Transform playerBody;
+
+    //reference to sensitivity slider
+    public Slider sensitivitySlider;
+
+    // menu panel on escp
+    public GameObject gameMenuPanel;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +24,14 @@ public class CameraMovement : MonoBehaviour
        Cursor.lockState = CursorLockMode.Locked;
        //reference to player
        playerBody = transform.parent;
-
+       //sensativ
+        if (sensitivitySlider != null)
+        {
+            sensitivitySlider.value = mouseSensitivity;
+            sensitivitySlider.onValueChanged.AddListener(OnSensitivityChanged);
+        }
+        //panel deactive
+        gameMenuPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,10 +46,31 @@ public class CameraMovement : MonoBehaviour
 
         //vertical rotation
         verticalRotation -= mouseY;
-        //limits to prevent flipping upside down
-        //verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
+        //to prevent flipping upside down
+        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-        //apply the vertical rotation by modifying the local rotation of the camera
         transform.localRotation = Quaternion.Euler(verticalRotation, transform.localEulerAngles.y, 0f);
+
+        //PANEL menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameMenuPanel.SetActive(!gameMenuPanel.activeSelf);
+
+            if (gameMenuPanel.activeSelf)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
+    }
+    //slider value changes
+    public void OnSensitivityChanged(float newValue)
+    {
+        mouseSensitivity = newValue;
     }
 }
