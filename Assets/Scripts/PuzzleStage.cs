@@ -8,9 +8,6 @@ public class PuzzleStage : MonoBehaviour
     public SoundManager soundManager;
     public List<int> targetSequence = new List<int> {0, 2, 3};
 
-    //station numbers
-    //public int stationID = 1;
-
 
     // Start is called before the first frame update
     void Start()
