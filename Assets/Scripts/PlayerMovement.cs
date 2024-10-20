@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //speed of player (chenged in inspector)
     public float moveSpeed = 5f;
+    //force of jump (chenged in inspector)
     public float jumpForce = 5f;
 
     private Rigidbody rb;
+    
+    //for jumping
     private bool isGrounded;
 
 

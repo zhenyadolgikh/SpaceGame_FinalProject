@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class ParticlesManager : MonoBehaviour
 {
+    //array of objects with particle systems
     public GameObject[] particleEffects = new GameObject[7];
+    //distance from camera for particle spawn
     public float spawnDistance = 3f;
     public Camera mainCamera;
     public Canvas canvas;
@@ -13,7 +15,8 @@ public class ParticlesManager : MonoBehaviour
     {
     
     }
-
+    
+    //on key particle from list
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MenuCameraRotate : MonoBehaviour
 {
+    //speed of rotated background in menu
     public float rotationSpeed = 10f;
 
     // Update is called once per frame

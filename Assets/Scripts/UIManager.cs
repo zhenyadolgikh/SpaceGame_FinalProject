@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    //panel in puzzle stages
     public GameObject uiWindow;
+    //reference to player
     public GameObject player;
 
     void Start()

@@ -24,7 +24,7 @@ public class CameraMovement : MonoBehaviour
        Cursor.lockState = CursorLockMode.Locked;
        //reference to player
        playerBody = transform.parent;
-       //sensativ
+       //sensativ slider
         if (sensitivitySlider != null)
         {
             sensitivitySlider.value = mouseSensitivity;
@@ -68,7 +68,7 @@ public class CameraMovement : MonoBehaviour
             }
         }
     }
-    //slider value changes
+    //slider value changes update
     public void OnSensitivityChanged(float newValue)
     {
         mouseSensitivity = newValue;
